@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#f6f5ef" />
+    <title>Step Into the Photo · Composition studio</title>
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./studio.css" />
+    <link rel="stylesheet" href="./live-demo.css" />
+    <link rel="stylesheet" href="./audience.css" />
+    <script>
+      if (new URLSearchParams(location.search).get('live') === '1')
+        document.documentElement.classList.add('demo-mode');
+    </script>
+  </head>
+  <body>
+    <header class="mast">
+      <a class="brand" href="./"><span class="brand-icon" data-icon="film"></span>Step Into the Photo</a>
+      <nav>
+        <a class="demo-entry studio-only" href="./?live=1">Live camera demo</a>
+        <a class="demo-entry demo-only" href="./">Composition studio</a>
+        <a class="notes-link" href="./families.html">Family examples</a>
+        <a class="notes-link" href="./notes.html">Field notes</a
+        ><button class="primary studio-only" id="save"><i data-icon="download"></i>Save photo</button>
+      </nav>
+    </header>
+    <main class="workspace">
+      <div class="work-heading">
+        <h1 class="studio-only">Composition studio</h1>
+        <h1 class="demo-only">Live photo demo</h1>
+        <span class="service studio-only" id="service">Connecting to local studio…</span>
+      </div>
+      <div class="desk">
+        <section class="editing" aria-label="Composition canvas">
+          <div class="canvas-card">
+            <div class="card-bar">
+              <span class="card-title"
+                ><i data-icon="frame"></i><span class="studio-only">Canvas</span
+                ><span class="demo-only">Live preview</span></span
+              >
+              <div class="view-switch studio-only" aria-label="Preview view">
+                <button data-view="original">Original</button
+                ><button class="active" data-view="composite">Composite</button>
+              </div>
+            </div>
+            <div class="mat">
+              <div id="picture">
+                <canvas
+                  id="scene"
+                  width="850"
+                  height="505"
+                  aria-label="Photo composition. Drag to position the active person."
+                  tabindex="0"
+                ></canvas>
+              </div>
+            </div>
+            <div class="canvas-footer">
+              <span id="scene-label">Kitty Hawk, 1903</span><span id="size-label">850 × 505 px</span>
+            </div>
+          </div>
+          <div class="transport studio-only">
+            <span class="tool-hint"
+              ><i data-icon="move"></i><span id="hint">Drag the person to place them.</span></span
+            ><button id="record" class="quiet"><i data-icon="record"></i><span>Record clip</span></button>
+          </div>
+          <div class="feedback" role="status" aria-live="polite">
+            <span data-icon="info"></span><span id="feedback">Opening the sample composition…</span>
+          </div>
+        </section>
+        <aside class="inspector demo-only" id="live-console" aria-label="Live demonstration controls">
+          <div class="inspector-head"><h2>Demo setup</h2></div>
+          <div class="panel">
+            <div class="section-line">
+              <h3>Photograph</h3>
+              <button class="text-btn" id="live-library">Scene library</button>
+            </div>
+            <button id="live-photo" class="wide" disabled><i data-icon="upload"></i>Choose photograph</button>
+            <div class="rule"></div>
+            <div class="section-line">
+              <h3>Camera</h3>
+              <span class="camera-state" id="live-status" role="status">Camera off</span>
+            </div>
+            <button id="live-camera" class="primary wide" disabled>
+              <i data-icon="camera"></i><span>Start camera</span>
+            </button>
+            <button id="live-person" class="wide" disabled>
+              <i data-icon="upload"></i>Use a photo of a person
+            </button>
+            <div id="live-message"></div>
+            <div class="rule"></div>
+            <form id="placement-form">
+              <label for="placement-prompt">Place the visitor</label>
+              <div class="placement-entry">
+                <input
+                  id="placement-prompt"
+                  type="text"
+                  maxlength="180"
+                  placeholder="e.g. Behind the woman"
+                  autocomplete="off"
+                />
+                <button id="apply-placement" type="submit">Place me</button>
+              </div>
+              <p id="placement-status" class="help" role="status" aria-live="polite"></p>
+              <div id="placement-choices"></div>
+              <button id="pick-placement-target" type="button" class="text-btn" hidden>
+                Pick subject in photo
+              </button>
+            </form>
+            <div class="rule"></div>
+            <details id="live-adjust">
+              <summary>Adjust the composition</summary>
+              <p class="help">Drag the person into position in the preview.</p>
+              <div id="live-placement"></div>
+              <div class="section-line">
+                <h3>Visitor lighting</h3>
+                <button id="auto-exposure" class="text-btn" type="button">Reset</button>
+              </div>
+              <label class="slider"
+                ><span>Exposure</span>
+                <input id="visitor-exposure" type="range" min="-1.5" max="1.5" step="0.1" value="0" />
+                <output for="visitor-exposure" id="visitor-exposure-out">Auto</output>
+              </label>
+              <button id="live-outline" class="wide">
+                <i data-icon="outline"></i>Edit foreground outline
+              </button>
+            </details>
+            <div class="rule"></div>
+            <button id="live-present" class="wide" disabled>
+              <i data-icon="frame"></i>Present full screen
+            </button>
+            <p class="help audience-hint">Press Esc to return to setup.</p>
+          </div>
+        </aside>
+        <aside class="inspector studio-only">
+          <div class="inspector-head">
+            <h2>Inspector</h2>
+            <i data-icon="sliders"></i>
+          </div>
+          <div class="tabs" role="tablist" aria-label="Inspector tools">
+            <button role="tab" aria-selected="true" data-tab="layers">Layers</button
+            ><button role="tab" aria-selected="false" data-tab="pose">Pose</button
+            ><button role="tab" aria-selected="false" data-tab="finish">Finish</button>
+          </div>
+          <div class="panel" id="layers" role="tabpanel">
+            <h3>Edit mode</h3>
+            <div class="seg">
+              <button id="add" aria-pressed="true"><i data-icon="person-plus"></i>Add person</button
+              ><button id="replace" aria-pressed="false"><i data-icon="swap"></i>Replace</button>
+            </div>
+            <div class="section-line">
+              <h3>Source layers</h3>
+              <button id="library" class="text-btn">Scene library</button>
+            </div>
+            <div class="layer">
+              <img id="scene-thumb" src="./samples/kitty-hawk.jpg" alt="" />
+              <div><small>Scene photograph</small><strong id="scene-name">Kitty Hawk, 1903</strong></div>
+              <button
+                id="open-scene"
+                class="icon"
+                title="Change scene photograph"
+                aria-label="Change scene photograph"
+              >
+                <i data-icon="upload"></i>
+              </button>
+            </div>
+            <div class="layer">
+              <img class="cut-thumb" id="person-thumb" src="./samples/traveler.png" alt="" />
+              <div><small>Active person</small><strong id="person-name">Apollo 11 astronaut</strong></div>
+              <button
+                id="open-person"
+                class="icon"
+                title="Import a person from a photo or video"
+                aria-label="Import a person from a photo or video"
+              >
+                <i data-icon="upload"></i>
+              </button>
+            </div>
+            <div class="row-actions">
+              <button id="camera"><i data-icon="camera"></i>Use webcam</button
+              ><button id="source-select"><i data-icon="cut"></i>Select person</button>
+            </div>
+            <div class="rule"></div>
+            <h3 id="outline-title">Foreground overlap</h3>
+            <p class="help" id="outline-help">Keep a person or object in front of the new layer.</p>
+            <button class="wide" id="outline">
+              <i data-icon="outline"></i><span>Edit foreground outline</span>
+            </button>
+            <div id="replace-extra" hidden>
+              <button class="wide" id="front-extra">Edit another foreground outline</button>
+            </div>
+            <div class="rule"></div>
+            <div id="placement-controls">
+              <div class="section-line">
+                <h3>Placement</h3>
+                <button class="text-btn" id="reset-place">Reset</button>
+              </div>
+              <label class="slider"
+                ><span>Scale</span
+                ><input id="scale" type="range" min="1" max="200" value="20" step=".1" /><output
+                  id="scale-out"
+                  >20%</output
+                ></label
+              >
+              <label class="slider"
+                ><span>Rotation</span
+                ><input id="rotation" type="range" min="-180" max="180" value="0" /><output id="rotation-out"
+                  >0°</output
+                ></label
+              >
+              <label class="check"><input id="flip" type="checkbox" />Flip horizontally</label>
+              <div id="live-tools" hidden>
+                <div class="rule"></div>
+                <h3>Live movement</h3>
+                <label class="space-picker"
+                  >Occlusion
+                  <select id="space-mode">
+                    <option value="auto">Follow my movement</option>
+                    <option value="manual">Set depth</option>
+                    <option value="outline">Foreground outline only</option>
+                  </select>
+                </label>
+                <label class="slider" id="manual-depth" hidden
+                  ><span>Nearness</span
+                  ><input type="range" id="depth-level" min="0" max="100" value="70" /><output
+                    id="depth-level-out"
+                    >70%</output
+                  ></label
+                >
+                <p class="help" id="depth-help" role="status"></p>
+                <div class="floor-controls">
+                  <label class="check"
+                    ><input type="checkbox" id="floor-shadow" checked />Contact shadow</label
+                  >
+                  <label class="check"><input type="checkbox" id="floor-reflection" />Floor reflection</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel" id="pose" role="tabpanel" hidden>
+            <h3>Articulated pose</h3>
+            <p class="help">
+              Move joints on the cutout, or borrow a pose from another photograph. For video and webcam,
+              freeze the frame you want to edit.
+            </p>
+            <button class="wide strong" id="rig"><i data-icon="person"></i>Open pose editor</button
+            ><button class="wide" id="target-pose">Use selected scene person’s pose</button>
+            <div class="rule"></div>
+            <h3>Live pose</h3>
+            <p class="help">
+              Step back so your full body is visible, strike a pose, then freeze it or save the composite.
+            </p>
+            <button class="wide" id="freeze"><i data-icon="freeze"></i>Freeze current frame</button
+            ><button class="wide" id="take" disabled>Record webcam take</button
+            ><button class="wide" id="sample-take">Try the recorded dancer</button>
+          </div>
+          <div class="panel" id="finish" role="tabpanel" hidden>
+            <h3>Photographic look</h3>
+            <label class="choice"
+              ><input type="radio" name="look" value="natural" checked /><span
+                ><b>Blend into the photograph</b
+                ><small>Learned color and light at the visitor’s position, with shadow, edge and focus</small></span
+              ></label
+            ><label class="choice"
+              ><input type="radio" name="look" value="untreated" /><span
+                ><b>Untreated</b><small>Original colors of the visitor</small></span
+              ></label
+            ><label class="choice"
+              ><input type="radio" name="look" value="simple" /><span
+                ><b>Simple correction</b><small>Grayscale or brightness and contrast</small></span
+              ></label
+            ><label class="choice"
+              ><input type="radio" name="look" value="matched" /><span
+                ><b>Match the photograph</b><small>Transfer tones from the outlined subject</small></span
+              ></label
+            ><label class="choice"
+              ><input type="radio" name="look" value="photographic" /><span
+                ><b>Match nearby light</b
+                ><small>Adjust exposure and white balance at the visitor’s position</small></span
+              ></label
+            >
+            <div class="rule"></div>
+            <h3>Build a group</h3>
+            <p class="help">Keep this result as the scene, then add or replace the next person.</p>
+            <button class="wide" id="stamp"><i data-icon="layers"></i>Keep person in scene</button
+            ><button class="wide" id="undo-stamp" disabled>Undo last kept person</button>
+            <div class="rule"></div>
+            <details id="study-tools">
+              <summary>Evaluation tools</summary>
+              <p class="help">
+                Use a recorded take and save a hand trace and a first tap in the foreground editor. Compare
+                identical motion across treatments.
+              </p>
+              <button class="wide" id="compare">Build comparison</button>
+              <div class="rule"></div>
+              <h3>Timed setup trial</h3>
+              <p class="help">
+                Load a scene and visitor first. Start opens a blank foreground outline and resets placement.
+                Apply the outline, position the visitor, then choose Save photo.
+              </p>
+              <div class="tools">
+                <label
+                  >Method
+                  <select id="trial-method">
+                    <option value="trace">Hand trace</option>
+                    <option value="tap">One tap</option>
+                  </select></label
+                >
+                <label>Participant code <input id="trial-participant" size="10" maxlength="40" /></label
+                ><label>Scene code <input id="trial-scene" size="10" maxlength="60" /></label>
+              </div>
+              <label class="help"
+                >Help or corrections observed (optional)<textarea
+                  id="trial-note"
+                  rows="2"
+                  maxlength="1000"
+                ></textarea>
+              </label>
+              <button class="wide" id="trial-start">Start timed setup</button
+              ><button class="wide" id="trial-stop" hidden>Stop trial</button>
+              <p class="help" role="status" id="trial-state"></p>
+              <div class="rule"></div>
+              <button class="wide" id="benchmark">Measure 30 seconds</button
+              ><button class="wide" id="metrics">Save session measurements</button>
+            </details>
+          </div>
+        </aside>
+      </div>
+    </main>
+    <footer class="site-foot">
+      <span>Step Into the Photo</span><a href="./notes.html#photographs">Photograph credits</a>
+    </footer>
+    <input hidden id="scene-file" type="file" accept="image/*,.heic,.heif,.tif,.tiff" /><input
+      hidden
+      id="person-file"
+      type="file"
+      accept="image/*,video/*,.heic,.heif,.tif,.tiff"
+    /><input hidden id="pose-file" type="file" accept="image/*,.heic,.heif,.tif,.tiff" />
+    <dialog id="mask-dialog">
+      <form method="dialog" class="dialog-bar">
+        <h2 id="mask-title">Foreground outline</h2>
+        <button class="icon" aria-label="Close editor"><i data-icon="close"></i></button>
+      </form>
+      <p class="help" id="mask-hint"></p>
+      <div class="editor-stage"><canvas id="mask-canvas" aria-label="Mask editor"></canvas></div>
+      <div class="tools" id="mask-tools">
+        <button data-tool="tap">Tap</button><button data-tool="exclude">Exclude point</button
+        ><button data-tool="paint">Brush +</button><button data-tool="erase">Brush −</button
+        ><button data-tool="trace">Hand trace</button
+        ><label
+          >Brush
+          <input id="brush" type="range" min="1" max="70" value="12" aria-label="Brush radius in pixels"
+        /></label>
+      </div>
+      <div class="tools" id="removal-margin-controls" hidden>
+        <label
+          >Removal margin <input id="removal-margin" type="range" min="0" max="20" step="1" value="3" />
+          <output id="removal-margin-out" for="removal-margin">3 px</output></label
+        >
+        <span class="help">Orange marks extra pixels the background fill will replace.</span>
+      </div>
+      <div class="dialog-actions">
+        <div>
+          <button id="mask-clear">Clear</button><button id="mask-undo">Undo</button
+          ><button id="close-trace" hidden>Close trace</button>
+        </div>
+        <button class="primary" id="mask-apply">Use outline</button>
+      </div>
+    </dialog>
+    <dialog id="pose-dialog">
+      <form method="dialog" class="dialog-bar">
+        <h2>Pose editor</h2>
+        <button class="icon" aria-label="Close editor"><i data-icon="close"></i></button>
+      </form>
+      <p id="rig-message" class="help">Drag the joints to move the person.</p>
+      <div class="editor-stage checker">
+        <canvas id="rig-canvas" aria-label="Draggable pose skeleton"></canvas>
+      </div>
+      <div class="tools">
+        <label
+          >Pose
+          <select id="pose-preset">
+            <option value="original">Original</option>
+            <option value="wave">Wave</option>
+            <option value="reach">Reach</option>
+            <option value="stride">Stride</option>
+            <option value="custom" disabled>Custom</option>
+          </select></label
+        ><button id="pose-ref">Use reference photo</button
+        ><label class="check"><input type="checkbox" id="anchors" />Adjust source joints</label>
+      </div>
+      <div class="dialog-actions">
+        <span class="help">Source joints mark where the limbs begin in your cutout.</span
+        ><button class="primary" id="rig-done">Done</button>
+      </div>
+    </dialog>
+    <dialog id="library-dialog">
+      <form method="dialog" class="dialog-bar">
+        <h2>Scene library</h2>
+        <button class="icon" aria-label="Close library"><i data-icon="close"></i></button>
+      </form>
+      <div class="tools">
+        <label
+          >Collection
+          <select id="collection">
+            <option value="families">Family photographs</option>
+            <option value="development">Development photographs</option>
+            <option value="held-out">Held-out evaluation photographs</option>
+          </select></label
+        >
+      </div>
+      <p class="help" id="library-hint"></p>
+      <div id="library-grid"></div>
+      <p class="help" id="family-gallery-link">
+        <a href="./families.html">Watch the four moving family examples</a>
+      </p>
+    </dialog>
+    <dialog id="comparison-dialog">
+      <form method="dialog" class="dialog-bar">
+        <h2>Blind comparison</h2>
+        <button class="icon" aria-label="Close comparison"><i data-icon="close"></i></button>
+      </form>
+      <div id="compare-content"></div>
+    </dialog>
+    <script type="module" src="./studio.js"></script>
+  </body>
+</html>

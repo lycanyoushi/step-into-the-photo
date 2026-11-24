@@ -1,0 +1,88 @@
+.demo-only,
+.demo-mode .studio-only {
+  display: none !important;
+}
+.demo-mode .demo-only {
+  display: block !important;
+}
+.demo-entry {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.camera-state {
+  font-size: 0.84rem;
+  color: var(--muted);
+}
+.camera-state.on {
+  color: #37632e;
+  font-weight: 650;
+}
+.audience-hint {
+  text-align: center;
+  margin: 8px 0 0;
+}
+#live-adjust > summary {
+  font-weight: 650;
+  cursor: pointer;
+}
+#live-placement {
+  margin: 12px 0;
+}
+.demo-mode .feedback {
+  margin-top: 14px;
+}
+.demo-mode .card-bar {
+  min-height: 48px;
+}
+#placement-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 650;
+}
+.placement-entry {
+  display: flex;
+  gap: 6px;
+}
+#placement-prompt {
+  flex: 1;
+  min-width: 0;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 8px;
+  font: inherit;
+}
+#placement-status {
+  margin: 8px 0 0;
+}
+#placement-status[data-state='error'] {
+  color: #8a451b;
+}
+#placement-choices {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+#placement-choices button {
+  flex-direction: column;
+  padding: 4px;
+  margin-top: 6px;
+  gap: 3px;
+  font-size: 0.76rem;
+}
+#placement-choices canvas {
+  width: 54px;
+  height: 54px;
+  border-radius: 3px;
+}
+#pick-placement-target {
+  margin-top: 8px;
+}
+#picture.picking-subject #scene {
+  cursor: crosshair;
+}

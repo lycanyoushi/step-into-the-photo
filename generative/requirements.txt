@@ -1,0 +1,6 @@
+diffusers==0.32.2
+transformers==4.49.0
+accelerate==1.9.0
+huggingface-hub==0.34.4
+safetensors==0.5.3
+filelock>=3.13,<4

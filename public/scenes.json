@@ -1,0 +1,222 @@
+[
+  {
+    "id": "kitty-hawk",
+    "title": "First flight at Kitty Hawk",
+    "split": "development",
+    "image": "./samples/first-flight.jpg",
+    "credit": "John T. Daniels, 1903. Wright Brothers Negatives, Library of Congress, ppprs.00626.",
+    "url": "https://www.loc.gov/pictures/resource/ppprs.00626/",
+    "sourceImage": "https://tile.loc.gov/storage-services/service/pnp/ppprs/00600/00626v.jpg",
+    "rightsSource": "https://www.loc.gov/pictures/collection/wri/rights.html",
+    "sha256": "1560a3322550b9113c829a1637a213a07b88aaddda1aeedcdf544f74d604a050"
+  },
+  {
+    "id": "grace-hopper",
+    "title": "Grace Hopper in uniform",
+    "split": "development",
+    "image": "./scene-bank/grace-hopper.jpg",
+    "credit": "James S. Davis, U.S. Navy, 1984. Naval History and Heritage Command, NH 96919-KN.",
+    "url": "https://www.history.navy.mil/content/history/nhhc/our-collections/photography/numerical-list-of-images/nhhc-series/nh-series/NH-96000/NH-96919-KN.html",
+    "sourceImage": "https://www.ibiblio.org/hyperwar/OnlineLibrary/photos/images/h96000/h96919k.jpg",
+    "rightsSource": "https://commons.wikimedia.org/wiki/File:Grace_Hopper.jpg",
+    "sha256": "d440470f4d5bea7c00675358ff4d23148f5ffab759c6d872ad13375899fb6a0b"
+  },
+  {
+    "id": "spacelab-crew",
+    "title": "The Spacelab-J crew aboard Endeavour",
+    "split": "development",
+    "image": "./scene-bank/spacelab-crew.jpg",
+    "credit": "NASA, Johnson Space Center, September 1992. STS047-09-009.",
+    "url": "https://images.nasa.gov/details/sts047-09-009",
+    "sourceImage": "https://images-assets.nasa.gov/image/sts047-09-009/sts047-09-009~medium.jpg",
+    "rightsSource": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "sha256": "d4fefb3a98d313e451666fdc1b6f122370af39f8418d156c5da90dee1c642453"
+  },
+  {
+    "id": "summit-ensemble",
+    "title": "Summit Avenue Ensemble, Atlanta",
+    "split": "development",
+    "image": "./scene-bank/summit-ensemble.jpg",
+    "credit": "Thomas Askew, 1899. Library of Congress, ppmsca.08772.",
+    "url": "https://www.loc.gov/pictures/resource/ppmsca.08772/",
+    "sourceImage": "https://tile.loc.gov/storage-services/service/pnp/ppmsca/08700/08772v.jpg",
+    "rightsSource": "https://www.loc.gov/free-to-use/families/",
+    "sha256": "e18c8231f0392527521b4f7ae7b86efe860a3f4c8e119666f4352d28ee0ea232"
+  },
+  {
+    "id": "pie-town-fair",
+    "title": "At the Pie Town fair, New Mexico",
+    "split": "development",
+    "image": "./scene-bank/pie-town-fair.jpg",
+    "credit": "Russell Lee, 1940. Library of Congress, fsac.1a34129.",
+    "url": "https://www.loc.gov/pictures/resource/fsac.1a34129/",
+    "sourceImage": "https://tile.loc.gov/storage-services/service/pnp/fsac/1a34000/1a34100/1a34129v.jpg",
+    "rightsSource": "https://www.loc.gov/free-to-use/families/",
+    "sha256": "80ab6391bc488f15a1c09eedabef6d78f7a964de0cb5d0ec4198417c31696a30"
+  },
+  {
+    "id": "garden-bench",
+    "title": "A nap in the Botanical Garden, Washington, D.C.",
+    "split": "development",
+    "image": "./scene-bank/garden-bench.jpg",
+    "credit": "John Ferrell, 1942. Library of Congress, fsa.8b14514.",
+    "url": "https://www.loc.gov/pictures/resource/fsa.8b14514/",
+    "sourceImage": "https://tile.loc.gov/storage-services/service/pnp/fsa/8b14000/8b14500/8b14514v.jpg",
+    "rightsSource": "https://www.loc.gov/free-to-use/gardens/",
+    "sha256": "dc33c8eb2d57ff0a48590bb792efead2d0d2f8f77507110f13c75c6eede719e9"
+  },
+  {
+    "id": "emir-bukhara",
+    "title": "Portrait of the Emir of Bukhara",
+    "split": "development",
+    "image": "./scene-bank/emir-bukhara.jpg",
+    "credit": "Sergei Mikhailovich Prokudin-Gorskii, 1911. Library of Congress, ppmsc.03959.",
+    "url": "https://www.loc.gov/pictures/resource/ppmsc.03959/",
+    "sourceImage": "https://tile.loc.gov/storage-services/service/pnp/ppmsc/03900/03959v.jpg",
+    "rightsSource": "https://www.loc.gov/free-to-use/colors-tell-the-story/",
+    "sha256": "4d6e37650064564e027c6525de41853cb0b9506302f9b8ad29881ab5c873cdc1"
+  },
+  {
+    "id": "greenhouse",
+    "title": "At the Ozone Park nursery, New York",
+    "split": "development",
+    "image": "./scene-bank/greenhouse.jpg",
+    "credit": "Stone S. Ishimaru, 1945. Library of Congress, ppmsca.83823.",
+    "url": "https://www.loc.gov/pictures/resource/ppmsca.83823/",
+    "sourceImage": "https://tile.loc.gov/storage-services/service/pnp/ppmsca/83800/83823v.jpg",
+    "rightsSource": "https://www.loc.gov/free-to-use/gardens/",
+    "sha256": "3c32c2e28179743966a963f287111fa06dacee0dafdb29518cd1e6ea90a0bfb8"
+  },
+  {
+    "id": "sauk-portrait",
+    "title": "Sauk family portrait",
+    "split": "held-out",
+    "image": "./scene-bank/sauk-portrait.jpg",
+    "credit": "F. A. Rinehart, 1899. Library of Congress, ppmsca.15857.",
+    "url": "https://www.loc.gov/pictures/resource/ppmsca.15857/",
+    "sourceImage": "https://cdn.loc.gov/service/pnp/ppmsca/15800/15857v.jpg",
+    "rightsSource": "https://www.loc.gov/free-to-use/families/",
+    "sha256": "a355561917b5ddff10f3af5588387ac34f1251b279568cd557aa73dc7e72a17b"
+  },
+  {
+    "id": "reading-together",
+    "title": "Reading the comics in Montgomery, Alabama",
+    "split": "held-out",
+    "image": "./scene-bank/reading-together.jpg",
+    "credit": "John Vachon, 1943. Library of Congress, fsa.8d27790.",
+    "url": "https://www.loc.gov/pictures/resource/fsa.8d27790/",
+    "sourceImage": "https://tile.loc.gov/storage-services/service/pnp/fsa/8d27000/8d27700/8d27790v.jpg",
+    "rightsSource": "https://www.loc.gov/free-to-use/families/",
+    "sha256": "300e46d48f0e06ef876339514008a79d470cbd479f3dfa9a4bd47d4d04764c91"
+  },
+  {
+    "id": "village-girls",
+    "title": "Three girls in a Russian village",
+    "split": "held-out",
+    "image": "./scene-bank/village-girls.jpg",
+    "credit": "Sergei Mikhailovich Prokudin-Gorskii, 1909. Library of Congress, prokc.21043.",
+    "url": "https://www.loc.gov/pictures/resource/prokc.21043/",
+    "sourceImage": "https://tile.loc.gov/storage-services/service/pnp/prokc/21000/21043v.jpg",
+    "rightsSource": "https://www.loc.gov/free-to-use/colors-tell-the-story/",
+    "sha256": "428c6320584b093881eeaecf1625192a3ddd90998185ef099c7141d15c44d54c"
+  },
+  {
+    "id": "nashville-workshop",
+    "title": "At work in Nashville, Tennessee",
+    "split": "held-out",
+    "image": "./scene-bank/nashville-workshop.jpg",
+    "credit": "Alfred T. Palmer, 1943. Library of Congress, fsac.1a35371.",
+    "url": "https://www.loc.gov/pictures/resource/fsac.1a35371/",
+    "sourceImage": "https://tile.loc.gov/storage-services/service/pnp/fsac/1a35000/1a35300/1a35371v.jpg",
+    "rightsSource": "https://www.loc.gov/free-to-use/colors-tell-the-story/",
+    "sha256": "8209f024efabb50b2177d719328e20a1b541e7da8d541fb5ea7ecd4388d7d64f"
+  },
+  {
+    "id": "sisters-san-antonio",
+    "title": "Siblings in San Antonio, Texas",
+    "split": "held-out",
+    "image": "./scene-bank/sisters-san-antonio.jpg",
+    "credit": "Russell Lee, 1939. Library of Congress, fsa.8a25678.",
+    "url": "https://www.loc.gov/pictures/resource/fsa.8a25678/",
+    "sourceImage": "https://cdn.loc.gov/service/pnp/fsa/8a25000/8a25600/8a25678v.jpg",
+    "rightsSource": "https://www.loc.gov/free-to-use/families/",
+    "sha256": "57e4364df9b1c386a3e29e1d953ea1ff9ae3ad4a1433aabd65601579e54973e6"
+  },
+  {
+    "id": "cherry-blossoms",
+    "title": "A visit to the Washington cherry blossoms",
+    "split": "held-out",
+    "image": "./scene-bank/cherry-blossoms.jpg",
+    "credit": "National Photo Company, 1929. Library of Congress, npcc.17266.",
+    "url": "https://www.loc.gov/pictures/resource/npcc.17266/",
+    "sourceImage": "https://cdn.loc.gov/service/pnp/npcc/17200/17266v.jpg",
+    "rightsSource": "https://www.loc.gov/free-to-use/families/",
+    "sha256": "98e7dd32bd7bb254eabf7978a9005e1b3d99f8a1055f114de181b6a06cc55864"
+  },
+  {
+    "id": "moving-day",
+    "title": "Moving day in San Diego, California",
+    "split": "held-out",
+    "image": "./scene-bank/moving-day.jpg",
+    "credit": "Russell Lee, 1941. Library of Congress, fsa.8c01399.",
+    "url": "https://www.loc.gov/pictures/resource/fsa.8c01399/",
+    "sourceImage": "https://tile.loc.gov/storage-services/service/pnp/fsa/8c01000/8c01300/8c01399v.jpg",
+    "rightsSource": "https://www.loc.gov/free-to-use/families/",
+    "sha256": "4ac641405810a6d4c335b821a69da9f418ccd320f54456373577de05cd8669fd"
+  },
+  {
+    "id": "union-soldier-family",
+    "title": "Union soldier with his wife and daughters",
+    "split": "held-out",
+    "image": "./scene-bank/union-soldier-family.jpg",
+    "credit": "Unidentified photographer, circa 1863-1865. Library of Congress, ppmsca.36454.",
+    "url": "https://www.loc.gov/pictures/resource/ppmsca.36454/",
+    "sourceImage": "https://tile.loc.gov/storage-services/service/pnp/ppmsca/36400/36454v.jpg",
+    "rightsSource": "https://www.loc.gov/free-to-use/families/",
+    "sha256": "d1871cd36ecd913591f99c8bdd288fbb6f482adaf94088590e599f894f5fcac5"
+  },
+  {
+    "id": "tifton-family",
+    "title": "The Young family in Tifton, Georgia",
+    "split": "held-out",
+    "image": "./scene-bank/tifton-family.jpg",
+    "credit": "Lewis Wickes Hine, 1909. Library of Congress, nclc.01580.",
+    "url": "https://www.loc.gov/pictures/resource/nclc.01580/",
+    "sourceImage": "https://cdn.loc.gov/service/pnp/nclc/01500/01580v.jpg",
+    "rightsSource": "https://www.loc.gov/free-to-use/families/",
+    "sha256": "fed1ee55e8213024ec3a5a626d377001d27d8570fcef534d3f75dbe79e2efc09"
+  },
+  {
+    "id": "golodnaia-steppe",
+    "title": "A family on the Golodnaia Steppe",
+    "split": "held-out",
+    "image": "./scene-bank/golodnaia-steppe.jpg",
+    "credit": "Sergei Mikhailovich Prokudin-Gorskii, circa 1905-1915. Library of Congress, ppmsc.03979.",
+    "url": "https://www.loc.gov/pictures/resource/ppmsc.03979/",
+    "sourceImage": "https://tile.loc.gov/storage-services/service/pnp/ppmsc/03900/03979v.jpg",
+    "rightsSource": "https://www.loc.gov/free-to-use/families/",
+    "sha256": "fcbad3ef311a8e7a50f338628b7a6fac4c593b9cf654e362ac2109b89ff96cb3"
+  },
+  {
+    "id": "kindergarten-garden",
+    "title": "Kindergarten in a Washington vegetable garden",
+    "split": "held-out",
+    "image": "./scene-bank/kindergarten-garden.jpg",
+    "credit": "Frances Benjamin Johnston, 1899. Library of Congress, cph.3a25266.",
+    "url": "https://www.loc.gov/pictures/resource/cph.3a25266/",
+    "sourceImage": "https://cdn.loc.gov/service/pnp/cph/3a20000/3a25000/3a25200/3a25266r.jpg",
+    "rightsSource": "https://www.loc.gov/free-to-use/gardens/",
+    "sha256": "e81eb354658b66d3bc422e555d55e6cc3b3830b37c4bbe559687e01d1d0560d4"
+  },
+  {
+    "id": "truvillion-garden",
+    "title": "The Truvillion children in their flower garden",
+    "split": "held-out",
+    "image": "./scene-bank/truvillion-garden.jpg",
+    "credit": "Ruby Terrill Lomax, 1940. Library of Congress, ppmsca.38775.",
+    "url": "https://www.loc.gov/pictures/resource/ppmsca.38775/",
+    "sourceImage": "https://cdn.loc.gov/service/pnp/ppmsca/38700/38775v.jpg",
+    "rightsSource": "https://www.loc.gov/free-to-use/gardens/",
+    "sha256": "15c147ed89993ed7fab3838b56fd0c693bce4a559f5f6e96d688eb9635081552"
+  }
+]

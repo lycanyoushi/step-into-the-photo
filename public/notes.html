@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#f6f6f1" />
+    <title>Field notes · Step Into the Photo</title>
+    <link rel="stylesheet" href="./studio.css" />
+    <link rel="stylesheet" href="./notes.css" />
+  </head>
+  <body>
+    <header class="mast">
+      <a class="brand" href="./"><span class="brand-icon" data-icon="film"></span>Step Into the Photo</a>
+      <a class="back-link" href="./">Open studio <span aria-hidden="true">↗</span></a>
+    </header>
+    <main class="notebook">
+      <header class="notes-heading">
+        <h1>Field notes</h1>
+        <p>
+          What happens to a photograph when someone new steps into the frame? Follow an astronaut into the
+          Wright brothers’ first flight, then watch one dancer step behind people in two different
+          photographs.
+        </p>
+      </header>
+      <section id="realism-test" aria-labelledby="realism-heading">
+        <h2 id="realism-heading">Which one is the original photograph?</h2>
+        <p>Look at Mae Jemison’s face and blue sleeve in these two crops. One is the original exposure.
+          In the other, the studio inserted her in exactly the same pose. Choose the image you think is original.</p>
+        <div class="realism-pair" id="realism-pair"></div>
+        <p id="realism-result" role="status"></p>
+        <details id="realism-method" hidden>
+          <summary>See the untreated insertion</summary>
+          <figure>
+            <img src="./demo/realism-untreated.jpg" loading="lazy" alt="The same crop with the altered visitor before blending." />
+            <figcaption>We removed Jemison from the photograph, made her cutout brighter, cooler and smoother, and put it back in the same position. Blending brings the blue sleeve closer to its original color. The eyes and shirt lettering are still sharper in the original.
+              <a href="https://images.nasa.gov/details/sts047-09-009">Original photograph by NASA</a>
+            </figcaption>
+          </figure>
+        </details>
+        <noscript>Enable JavaScript to choose between the two photographs.</noscript>
+      </section>
+      <section aria-labelledby="family-scenes">
+        <h2 id="family-scenes">Moving in a family photograph</h2>
+        <p>
+          Watch the same visitor join a picnic, a kitchen, a 1942 stroller portrait and a sunset walk. The
+          kitchen counter and stroller stay in front where the visitor passes behind them. On wet sand, the
+          reflection moves with the visitor’s supporting foot. Each example opens in the studio with the same
+          starting placement. <a href="./families.html">Explore the family photographs</a>
+        </p>
+        <p>
+          For a photograph you upload, the studio can estimate relative depth once, then use the visitor’s
+          floor contact and change in apparent size to follow motion toward or away from the camera. For
+          seated or cropped visitors, use the depth slider. A hand-drawn outline can protect a foreground
+          object when the scene depth is ambiguous. Glass, mirrors and contact between individual limbs and
+          people remain difficult.
+          <a href="https://github.com/DepthAnything/Depth-Anything-V2">Depth Anything V2</a>
+        </p>
+        <p>
+          On this laptop the live workflow processed 751 distinct 640 × 480 camera timestamps over 30.001
+          seconds on an uploaded 1080 × 721 picnic photo, with automatic depth and contact shadows active. The
+          file-backed camera replayed the same ten-second take at its native 25 fps.
+          <a href="./families/demos/live-benchmark.json">Live measurements</a> ·
+          <a href="./families/demos/verification.json">Four-scene frame checks</a>
+        </p>
+      </section>
+      <section aria-labelledby="blending">
+        <h2 id="blending">Belonging where you stand</h2>
+        <p>
+          A cutout pasted into a photograph gives itself away in four ways: it is the wrong size for where it
+          stands, it floats, it is lit by a different room, and its edges are sharper than anything around it.
+          The live demo addresses each one before the visitor appears.
+        </p>
+        <p>
+          Faces are about the same size on everyone, so the faces already in the photograph calibrate how
+          large a person is at each depth. Level ground comes steadily nearer toward the bottom of a picture,
+          which fixes the row where someone at a given depth stands. A waist-up camera view is only placed
+          where something nearer in the photograph covers its cropped edge, or in the near foreground where
+          the photograph’s own border crops it. Nearer ground does not count as cover.
+        </p>
+        <p>
+          A harmonization network then looks at the untreated visitor inside the photograph and predicts how
+          that picture would have rendered them. The studio keeps the answer as a color table, so the tone
+          holds steady while a live visitor moves. Black-and-white and toned prints give the visitor the
+          print’s own color for each brightness. Finally the visitor is softened to the photograph’s sharpest
+          edges at that depth, picks up a rim of light from the scene behind, and casts a soft shadow in the
+          direction the photographed shadows fall. If smooth areas of the photograph show more grain than
+          the visitor, the studio adds fine grain inside the visitor’s outline. In a live take, that grain
+          stays fixed to the photograph as the visitor moves.
+          <a href="https://github.com/rakutentech/PCT-Net-Image-Harmonization">PCT-Net</a>
+        </p>
+        <p>
+          Single-view depth is relative and approximate. A visitor lit from the front will not become a true
+          silhouette in a backlit scene, and a spot with nothing to stand behind leaves a waist-up visitor
+          only the foreground.
+        </p>
+      </section>
+      <section aria-labelledby="overlap">
+        <h2 id="overlap">Standing behind Wilbur</h2>
+        <div class="plates">
+          <figure>
+            <img
+              src="./figures/original.webp"
+              width="408"
+              height="310"
+              alt="Detail of the original print showing Wilbur in profile beside the airplane."
+            />
+            <figcaption>Original photograph</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="./figures/overlay.webp"
+              width="408"
+              height="310"
+              alt="The color astronaut covers the edge of Wilbur’s dark coat."
+            />
+            <figcaption>Untreated overlay</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="./figures/composite.webp"
+              width="408"
+              height="310"
+              alt="The astronaut takes on the dark print tones and Wilbur’s original coat is visible in front."
+            />
+            <figcaption>Foreground restored, tones matched</figcaption>
+          </figure>
+        </div>
+        <p>
+          Watch the edge of Wilbur’s coat. The studio draws the photograph, adds the visitor, then redraws the
+          original pixels inside Wilbur’s outline. The visitor keeps the same size and position in both
+          composites. The astronaut’s suit darkens because Wilbur’s coat supplies the reference tones. A pale
+          suit and a dark coat make a deliberately demanding pair.
+        </p>
+      </section>
+      <section aria-labelledby="motion">
+        <h2 id="motion">One movement, two photographs</h2>
+        <p>
+          The same ten-second studio dance plays behind Wilbur Wright in a monochrome print and behind Mae
+          Jemison in a color crew photograph. Each frame passes through the browser’s person segmenter once,
+          then the three treatments share that cutout and placement. Watch the dancer’s hand and bent knee
+          disappear behind the foreground figure.
+        </p>
+        <div class="motion-clips">
+          <figure>
+            <video
+              controls
+              playsinline
+              preload="metadata"
+              poster="./demo/kitty-hawk.jpg"
+              aria-label="Kitty Hawk, four-panel motion comparison"
+            >
+              <source src="./demo/kitty-hawk.mp4" type="video/mp4" />
+            </video>
+            <figcaption><a href="./demo/kitty-hawk.mp4">Kitty Hawk · 10 seconds</a></figcaption>
+          </figure>
+          <figure>
+            <video
+              controls
+              playsinline
+              preload="metadata"
+              poster="./demo/spacelab.jpg"
+              aria-label="Spacelab crew, four-panel motion comparison"
+            >
+              <source src="./demo/spacelab.mp4" type="video/mp4" />
+            </video>
+            <figcaption><a href="./demo/spacelab.mp4">Spacelab · 10 seconds</a></figcaption>
+          </figure>
+        </div>
+        <p>
+          In the first clip a dark coat drives the matched visitor toward charcoal. In the second, Mae’s blue
+          suit gives the pale sweater a violet cast. These are two examples a viewer can judge by eye. The
+          dancer comes from licensed stock footage. <a href="./demo/movement.mp4">Watch the source take</a> ·
+          <a href="./demo/verification.json">Frame and overlap counts</a>
+        </p>
+      </section>
+      <section aria-labelledby="edit">
+        <h2 id="edit">Make a composition</h2>
+        <dl class="method-list">
+          <div>
+            <dt>Add a person</dt>
+            <dd>
+              Open a scene and import a visitor photo, video or webcam feed in <strong>Layers</strong>. A
+              transparent PNG carries its own outline. MediaPipe segments people in an opaque image or each
+              incoming frame. With several people in a still, use <strong>Select person</strong> to isolate
+              the visitor you want. Drag the visitor into place and adjust the scale.
+            </dd>
+          </div>
+          <div>
+            <dt>Control the overlap</dt>
+            <dd>
+              Choose <strong>Edit foreground outline</strong> and tap the original person who should stand
+              closest to the camera. SAM 2 ranks mask candidates from your tap. Add a point on a missed
+              region, exclude a background point, or refine the boundary with the brush.
+              <strong>Hand trace</strong> lets you draw a polygon. One foreground outline can hide any part of
+              the visitor that passes behind it.
+            </dd>
+          </div>
+          <div>
+            <dt>Replace a person</dt>
+            <dd>
+              Choose <strong>Replace</strong> and outline the person to remove. The local service fills the
+              selected region from the surrounding scene. Place the replacement over this background, then
+              outline any other original person who should stand in front. Large gaps, patterned walls and a
+              chair partly hidden by the original person can expose errors in the fill.
+            </dd>
+          </div>
+          <div>
+            <dt>Match and save</dt>
+            <dd>
+              Under <strong>Finish</strong>, compare the original visitor colors, a simple grayscale or
+              brightness correction, and bounded color transfer. The transfer measures channel means and
+              spreads in CIE Lab on the selected subject and the first usable visitor frame. Keeping that
+              calibration fixed suppresses color changes as a visitor leans.
+              <strong>Save photo</strong> exports the canvas. <strong>Keep person in scene</strong> lets you
+              add another visitor.
+            </dd>
+          </div>
+        </dl>
+      </section>
+      <section aria-labelledby="replacement">
+        <h2 id="replacement">Taking Wilbur’s place</h2>
+        <div class="plates">
+          <figure>
+            <img
+              loading="lazy"
+              src="./figures/original.webp"
+              width="408"
+              height="310"
+              alt="Wilbur Wright stands on the sand in a dark hat and coat."
+            />
+            <figcaption>Wilbur in the original print</figcaption>
+          </figure>
+          <figure>
+            <img
+              loading="lazy"
+              src="./figures/replacement-background.webp"
+              width="408"
+              height="310"
+              alt="Sand and the distant horizon fill the region where Wilbur stood."
+            />
+            <figcaption>Background filled by LaMa</figcaption>
+          </figure>
+          <figure>
+            <img
+              loading="lazy"
+              src="./figures/replacement-posed.webp"
+              width="408"
+              height="310"
+              alt="Buzz Aldrin occupies the same spot with his left glove raised above his shoulder."
+            />
+            <figcaption>Aldrin in the wave pose</figcaption>
+          </figure>
+        </div>
+        <p>
+          A tight outline left a recognizable dark silhouette of Wilbur. A three-pixel removal margin included
+          the soft edges of his coat, hat and shoes. LaMa then continued the horizon and sand through the
+          opening. The filled sand looks slightly smoother than the print around it. The final panel adds the
+          astronaut with a raised glove and the grayscale correction.
+        </p>
+      </section>
+      <section aria-labelledby="posing">
+        <h2 id="posing">Raising a hand from a single photograph</h2>
+        <div class="plates">
+          <figure>
+            <img
+              loading="lazy"
+              src="./figures/pose-source.webp"
+              width="390"
+              height="360"
+              alt="Buzz Aldrin with one glove held in front of the suit."
+            />
+            <figcaption>Photographed pose</figcaption>
+          </figure>
+          <figure>
+            <img
+              loading="lazy"
+              src="./figures/pose-joints.webp"
+              width="390"
+              height="360"
+              alt="Detected head, arm, hip and leg joints marked over the same cutout."
+            />
+            <figcaption>Editable body landmarks</figcaption>
+          </figure>
+          <figure>
+            <img
+              loading="lazy"
+              src="./figures/pose-wave.webp"
+              width="390"
+              height="360"
+              alt="The same suit with the left arm raised and a small uneven area along the exposed torso."
+            />
+            <figcaption>Wave preset</figcaption>
+          </figure>
+        </div>
+        <p>
+          Open the <strong>Pose</strong> editor and check that the joints sit on the cutout.
+          <strong>Adjust source joints</strong> corrects those anchors. Switch it off to move the limbs, try a
+          preset or choose a reference photograph. With a selected scene subject, the studio can also copy
+          that person’s pose. A webcam or video can supply a real pose directly, or a frozen frame for
+          editing.
+        </p>
+        <p>
+          The pose editor maps a textured mesh along the arms, legs, torso and head. When a forearm crosses
+          the torso, their separate layers can overlap. A reference photo supplies projected bone directions
+          and estimated depth, and the source supplies body proportions. The raised glove retains its original
+          viewing angle. Look under the raised arm for a jagged edge where the original sleeve hid the suit.
+          Turning a person around, revealing a missing hand or changing individual fingers requires visual
+          detail outside this two-dimensional model.
+        </p>
+      </section>
+      <section aria-labelledby="synthesis">
+        <h2 id="synthesis">Redrawing the raised hand</h2>
+        <figure>
+          <img
+            style="display: block; width: 100%; height: auto"
+            src="./figures/pose-synthesis.webp"
+            width="1272"
+            height="510"
+            alt="The source astronaut, a textured wave, and a generated wave. The generated glove has a new outline and the chest fittings differ."
+          />
+          <figcaption>
+            Three stages of the same edit. The pose guide sets the raised arm. The appearance reference
+            carries the suit and visor into the generated image.
+          </figcaption>
+        </figure>
+        <p>
+          In the pose editor, open <strong>Generate pose details</strong> to synthesize a photographic
+          variation. Stable Diffusion 1.5 starts from the edited cutout. OpenPose ControlNet conditions the
+          limbs on the target skeleton, and IP-Adapter Plus conditions the appearance on the original
+          photograph. The generator can invent the underside of a glove that the camera never saw. It can also
+          change a face, insignia or clothing pattern. Inspect the geometric and generated previews together
+          before accepting the cutout.
+        </p>
+        <p>
+          On this laptop’s 4 GB RTX 3050, a 512 × 512 example took about 65 seconds with the pose guide and 84
+          seconds with the additional appearance reference. The interactive pose editor and camera compositor
+          run independently of that generation step.
+        </p>
+      </section>
+      <section aria-labelledby="study">
+        <h2 id="study">Evidence and evaluation</h2>
+        <p>
+          The panels above are exports from the local renderer. Browser checks exercise source landmark
+          detection, reference-photo transfer, manual anchor correction, a colored hand crossing a differently
+          colored torso, and returning to the original pose.
+        </p>
+        <p>
+          The proposal’s viewer and timing studies remain open. The planned comparison uses eight development
+          photographs and twelve held-out scenes, the same recorded lean and placement, and randomized choices
+          between treatments. The studio’s evaluation tools support comparing a hand trace with a first tap,
+          comparing the three color treatments, and exporting session measurements. Three first-time users are
+          needed for the setup-time study. The performance target is 24 fresh composited frames per second
+          during a 30-second webcam run at 640 × 480 on the demo laptop.
+        </p>
+        <p>
+          In Edge on the demo laptop, the blended compositor displayed 752 freshly segmented camera frames in
+          30.051 seconds, or 25.02 fps. A file-backed camera replayed the 640 × 480 dance take at its original
+          25 fps. The recording repeats every ten seconds. A run with the physical webcam remains open.
+          <a href="./demo/live-benchmark.json">Device details and processed frame timestamps</a>
+        </p>
+      </section>
+      <section aria-labelledby="photographs">
+        <h2 id="photographs">Photographs and methods</h2>
+        <ul class="references">
+          <li>
+            John T. Daniels, first powered flight, Kitty Hawk, North Carolina, December 17, 1903. Library of
+            Congress, Wright Brothers Negatives, LC-DIG-ppprs-00626.
+            <a href="https://www.loc.gov/collections/wright-brothers-negatives/about-this-collection/"
+              >Collection record ↗</a
+            >
+          </li>
+          <li>
+            Neil Armstrong / NASA, Buzz Aldrin on the lunar surface, Apollo 11, July 1969, AS11-40-5903. The
+            studio uses a cutout from the photograph.
+            <a href="https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=5903&amp;mission=AS11&amp;roll=40"
+              >NASA image record ↗</a
+            >
+          </li>
+          <li>
+            NASA / Johnson Space Center, Spacelab-J crew aboard Endeavour, September 1992, STS047-09-009. The
+            motion comparison uses a detail with Mae Jemison in the foreground.
+            <a href="https://images.nasa.gov/details/sts047-09-009">NASA image record ↗</a>
+          </li>
+          <li>
+            Antoni Shkraba, studio dancer, Pexels video 7571381. The motion comparisons use a cropped, silent
+            ten-second excerpt, then isolate and recolor the dancer.
+            <a href="https://www.pexels.com/video/video-of-a-man-dancing-7571381/">Source film ↗</a> ·
+            <a href="https://www.pexels.com/license/">Pexels license ↗</a>
+          </li>
+          <li>
+            The local service uses SAM 2.1 for prompted selection and LaMa for inpainting when those models
+            are installed. The lightweight configuration uses GrabCut and Telea inpainting.
+            <a href="https://github.com/facebookresearch/sam2">SAM 2 ↗</a> ·
+            <a href="https://github.com/advimman/lama">LaMa ↗</a>
+          </li>
+          <li>
+            Google MediaPipe supplies the visitor matte and the initial anatomical landmarks.
+            <a href="https://ai.google.dev/edge/mediapipe/solutions/vision/image_segmenter"
+              >Image Segmenter ↗</a
+            >
+            ·
+            <a href="https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker"
+              >Pose Landmarker ↗</a
+            >
+          </li>
+          <li>
+            The bounded channel transfer adapts the statistical approach of Reinhard, Ashikhmin, Gooch and
+            Shirley (2001) to CIE Lab.
+            <a href="https://pages.cs.wisc.edu/~dyer/cs534/papers/color-transfer-cga2001.pdf"
+              >Color Transfer between Images ↗</a
+            >
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer class="site-foot"><span>Step Into the Photo</span><a href="./">Composition studio</a></footer>
+    <script type="module">
+      import './realism-test.js';
+      import { icons } from './ui.js';
+      icons();
+    </script>
+  </body>
+</html>

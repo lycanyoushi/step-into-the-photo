@@ -1,0 +1,96 @@
+{
+  "frameCount": 250,
+  "sourceDistinctFrames": 250,
+  "fps": 25,
+  "durationSeconds": 10.0,
+  "auditFrames": [
+    0,
+    25,
+    50,
+    75,
+    100,
+    119,
+    125,
+    150,
+    175,
+    200,
+    225,
+    249
+  ],
+  "renderAudit": "Before JPEG and H.264 encoding. Protected pixels are fully covered by the foreground mask or outside the visitor, its contact shadow and any enabled wet-floor reflection.",
+  "scenes": {
+    "park-picnic": {
+      "source": "./demo/waving-visitor.mp4",
+      "sourceSHA256": "98500f59a4359e34a8c2d4f11a7e17fb57e295de20b4ed81aebd65e68a8d2900",
+      "distinctDecodedFrames": 250,
+      "placement": {
+        "x": 0.64,
+        "y": 0.501,
+        "width": 0.176
+      },
+      "reflection": false,
+      "auditedFramesWithOcclusion": 12,
+      "peakHiddenBodyPixels": 6526,
+      "minimumVisibleBodyPixels": 3206,
+      "peakReflectedPixels": 0,
+      "visibleCentroidHorizontalRangePixels": 26.51,
+      "maxProtectedChannelDifference": 0,
+      "minimumProtectedPixels": 663083
+    },
+    "sunday-stroll": {
+      "source": "./demo/movement.mp4",
+      "sourceSHA256": "3ae3a3b1dc99daca24d3e84ac2560a2e139daae324ae529b848e226d06098bcf",
+      "distinctDecodedFrames": 250,
+      "placement": {
+        "x": 0.392,
+        "y": 0.44,
+        "width": 1.105
+      },
+      "reflection": false,
+      "auditedFramesWithOcclusion": 12,
+      "peakHiddenBodyPixels": 46882,
+      "minimumVisibleBodyPixels": 15346,
+      "peakReflectedPixels": 0,
+      "visibleCentroidHorizontalRangePixels": 69.11,
+      "maxProtectedChannelDifference": 0,
+      "minimumProtectedPixels": 703013
+    },
+    "shore-walk": {
+      "source": "./demo/movement.mp4",
+      "sourceSHA256": "3ae3a3b1dc99daca24d3e84ac2560a2e139daae324ae529b848e226d06098bcf",
+      "distinctDecodedFrames": 250,
+      "placement": {
+        "x": 0.435,
+        "y": 0.498,
+        "width": 0.61
+      },
+      "reflection": true,
+      "auditedFramesWithOcclusion": 12,
+      "peakHiddenBodyPixels": 5282,
+      "minimumVisibleBodyPixels": 6725,
+      "peakReflectedPixels": 13421,
+      "visibleCentroidHorizontalRangePixels": 28.96,
+      "maxProtectedChannelDifference": 0,
+      "minimumProtectedPixels": 640462
+    },
+    "family-kitchen": {
+      "source": "./demo/waving-visitor.mp4",
+      "sourceSHA256": "98500f59a4359e34a8c2d4f11a7e17fb57e295de20b4ed81aebd65e68a8d2900",
+      "distinctDecodedFrames": 250,
+      "placement": {
+        "x": 0.785,
+        "y": 0.599,
+        "width": 0.48,
+        "flip": true
+      },
+      "reflection": false,
+      "auditedFramesWithOcclusion": 12,
+      "peakHiddenBodyPixels": 39533,
+      "minimumVisibleBodyPixels": 24396,
+      "peakReflectedPixels": 0,
+      "visibleCentroidHorizontalRangePixels": 76.83,
+      "maxProtectedChannelDifference": 0,
+      "minimumProtectedPixels": 616219
+    }
+  }
+}

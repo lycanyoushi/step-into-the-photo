@@ -1,0 +1,26 @@
+Source performance
+Ketut Subiyanto, Pexels, A Man Greeting and Waving His Hand, 4586958.
+https://www.pexels.com/video/a-man-greeting-and-waving-his-hand-4586958/
+https://www.pexels.com/license/
+Original rendition: https://videos.pexels.com/video-files/4586958/4586958-hd_1280_720_25fps.mp4
+Original SHA-256: 9f05b1ff00b076e25febb7dbe264711e779f7368e911b3a0d43180b1f313606e
+waving-visitor.mp4 is a silent, centered 960 x 720 crop from 0.60 to 10.60 seconds at 25 fps.
+picnic-before-after.jpg shows the same frame at 2.48 seconds in that excerpt, supplied as a stationary test camera to the previous and updated live demos. Both used the original picnic photograph and the prompt "behind the woman." The side-by-side panels show the same 596 x 445 region at native resolution. Picnic photograph by Kampus Production, 2021: https://www.pexels.com/photo/family-having-fun-at-the-picnic-7669132/
+
+Antoni Shkraba, Pexels, Video of a Man Dancing, 7571381.
+https://www.pexels.com/video/video-of-a-man-dancing-7571381/
+https://www.pexels.com/license/
+Original rendition: https://videos.pexels.com/video-files/7571381/7571381-hd_1366_720_25fps.mp4
+Original SHA-256: a822940ef954828524bc6733dd354f0e1aa9f5e3d6218e027468a5045c1a8183
+movement.mp4 is the silent 4.00–14.00 second excerpt, center-cropped to a 4:3 frame, resized to 640×480, and encoded at 25 fps. It retains the source performance and background.
+Preparation: ffmpeg -ss 4 -i original.mp4 -t 10 -an -vf crop=960:720,scale=640:480 -r 25 -c:v libx264 -crf 19 -movflags +faststart movement.mp4
+
+Scenes
+John T. Daniels, first powered flight, December 17, 1903. Library of Congress, Wright Brothers Negatives. LC-DIG-ppprs-00626.
+https://www.loc.gov/collections/wright-brothers-negatives/about-this-collection/
+NASA / Johnson Space Center, Spacelab-J crew aboard Endeavour, September 1992. STS047-09-009.
+https://images.nasa.gov/details/sts047-09-009
+jemison-mask.png is the first local SAM 2.1 outline from a positive point at (722,423) on the 1100×724 development photograph.
+
+Composites
+The browser segmented each distinct video frame with the bundled MediaPipe model. Per scene, all three composites reuse the frame, placement, foreground outline and sample region. The top-left panel is the scene photograph at the same crop. Output and poster generation: scripts/build_motion_demo.py. Placement, duration, segmentation overlap and decoded frame counts are recorded in verification.json. This demonstration uses public source footage and does not report a participant study.

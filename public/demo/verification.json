@@ -1,0 +1,59 @@
+{
+  "input": "movement.mp4",
+  "frame_count": 250,
+  "fps": 25,
+  "distinct_source_frames": 250,
+  "mask_sample_width": 275,
+  "results": {
+    "kitty-hawk": {
+      "occluded_frames": 247,
+      "min_hidden_samples": 0,
+      "max_hidden_samples": 90,
+      "min_visible_samples": 92,
+      "distinct_decoded_output_frames": 250
+    },
+    "spacelab": {
+      "occluded_frames": 250,
+      "min_hidden_samples": 491,
+      "max_hidden_samples": 1110,
+      "min_visible_samples": 603,
+      "distinct_decoded_output_frames": 250
+    }
+  },
+  "scenes": [
+    {
+      "name": "kitty-hawk",
+      "photo": "samples/kitty-hawk.jpg",
+      "mask": "samples/wilbur-mask.png",
+      "placement": {
+        "width": 0.183,
+        "x": 0.875,
+        "y": 0.42
+      },
+      "crop": [
+        601,
+        113,
+        248,
+        186
+      ],
+      "simple": "Grayscale"
+    },
+    {
+      "name": "spacelab",
+      "photo": "scene-bank/spacelab-crew.jpg",
+      "mask": "demo/jemison-mask.png",
+      "placement": {
+        "width": 0.64,
+        "x": 0.77,
+        "y": 0.48
+      },
+      "crop": [
+        428,
+        66,
+        672,
+        504
+      ],
+      "simple": "Brightness and contrast"
+    }
+  ]
+}
